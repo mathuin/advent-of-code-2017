@@ -1,9 +1,8 @@
 package main
 
 import (
-	"flag"
 	"fmt"
-	"log"
+	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -33,25 +32,16 @@ func Captcha(seq string) (int, error) {
 	return sum, nil
 }
 
-func usage() {
-	fmt.Fprintf(os.Stderr, "usage: %s [sequence]\n", os.Args[0])
-	flag.PrintDefaults()
-	os.Exit(2)
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
 }
 
 func main() {
-	flag.Usage = usage
-	flag.Parse()
-
-	args := flag.Args()
-	if len(args) < 1 {
-		fmt.Println("Sequence missing.")
-		os.Exit(1)
-	}
-	// No sanity checking on input here either.
-	retval, err := Captcha(args[0])
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(retval)
+	seq, err := ioutil.ReadAll(os.Stdin)
+	check(err)
+	result, err := Captcha(strings.TrimSuffix(string(seq), "\n"))
+	check(err)
+	fmt.Println(result)
 }

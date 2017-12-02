@@ -27,11 +27,11 @@ for k, v in tt.items():
     if result != v:
         print("FAIL: input ", k, ": expected ", v, ", got ", result, sep="")
 
-# Copy sequence from command line argument.
 # The input is not checked for sanity, just existence.
-if len(sys.argv) != 2:
-    print("Usage:", sys.argv[0], "[sequence]")
+seq = sys.stdin.readlines()
+if len(seq) == 0:
+    print("Sequence missing!")
     sys.exit(1)
-seq = sys.argv[1]
 
-print(captcha(seq))
+# Only one line, and I don't want the newline character.
+print(captcha(seq[0][:-1]))
