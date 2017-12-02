@@ -2,7 +2,8 @@
 
 tmpout="$(mktemp -d /tmp/advent.XXXXXX)"
 for dir in `ls -d */`; do
-    basename=`echo $dir | sed -e "s|/||"`
+    basename=`basename $dir`
+    echo "$basename:"
     pushd $dir >/dev/null
     for language in Python Go; do
         if [ $language == "Python" ]; then
@@ -12,9 +13,9 @@ for dir in `ls -d */`; do
         fi
         diff $tmpout/checkout output >/dev/null
         if [ $? -eq 0 ]; then
-            echo "$basename $language PASS"
+            echo "  $language PASS"
         else
-            echo "$basename $language FAIL"
+            echo "  $language FAIL"
         fi
     done
     popd >/dev/null
