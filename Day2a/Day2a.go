@@ -58,12 +58,8 @@ func check(e error) {
 
 func main() {
 	sheet, err := ioutil.ReadFile("input")
-	if err != nil {
-		panic(err)
-	}
+	check(err)
 	result, err := Checksum(sheet)
-	if err != nil {
-		panic(err)
-	}
+	check(err)
 	fmt.Println(result)
 }
