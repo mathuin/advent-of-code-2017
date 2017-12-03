@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import sys
-import math
 
 
 # As a stress test on the system, the programs here clear the grid and then
