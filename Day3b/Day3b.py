@@ -69,7 +69,7 @@ def nextLoc(loc, dir):
     return (loc[0]+dir[0], loc[1]+dir[1])
 
 # Unit tests for steps.
-tt = {'3': 4, '12': 23, '25': 26, '512': 747}
+tt = {'3': 4, '12': 23, '25': 25, '512': 747}
 for k, v in tt.items():
     result = larger(k)
     if result != v:
