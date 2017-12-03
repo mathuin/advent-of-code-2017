@@ -9,7 +9,7 @@ for dir in `ls -d */`; do
         if [ $language == "Python" ]; then
             ./$basename.py < input > $tmpout/checkout
         elif [ $language == "Go" ]; then
-            go build && ./$basename < input > $tmpout/checkout && rm ./$basename
+            go run ./$basename.go < input > $tmpout/checkout
         fi
         diff $tmpout/checkout output >/dev/null
         if [ $? -eq 0 ]; then
