@@ -29,6 +29,15 @@ def countValid(passphrases):
             valid += 1
     return valid
 
+
+# Unit tests for countValid.
+tt = {'x': (['aa bb cc dd ee\n', 'aa bb cc dd aa\n', 'aa bb cc dd aaa\n'], 2)}
+for k, v in tt.items():
+    result = countValid(v[0])
+    if result != v[1]:
+        print("FAIL: input ", v[0], ": expected ", v[1], ", got ", result, sep="")
+
+
 # The input is not checked for sanity, just existence.
 passphrases = sys.stdin.readlines()
 if len(passphrases) == 0:
