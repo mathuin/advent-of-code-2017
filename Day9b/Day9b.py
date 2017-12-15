@@ -37,7 +37,6 @@ def removeGarbage(chars):
         if trash and char == '>':
             trash = False
         if trash:
-            print("char is trash: ", char)
             removed += 1
     return removed
 
