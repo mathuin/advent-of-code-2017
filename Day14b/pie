@@ -1,0 +1,8 @@
+bit:  (1, 8)
+neighbors:  [(0, 8), (2, 8), (1, 7), (1, 9)]
+ingroups:  [3, 29]
+Merging groups!
+[[(0, 8), (0, 9), (0, 10), (0, 11)], [(1, 7)]]
+notinflat:  []
+notingrid:  []
+lengths missing!
